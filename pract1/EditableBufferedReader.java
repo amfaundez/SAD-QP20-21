@@ -5,11 +5,11 @@ public class EditableBufferedReader extends BufferedReader {
     public static final int HOME= 2000; //o -2^32;
     public static final int INS= 2001;
     public static final int DEL=2002;
-	public static final int END= 2003;
+    public static final int END= 2003;
     public static final int RIGHT= 2004;
-	public static final int LEFT= 2005;
+    public static final int LEFT= 2005;
     public static final int UP= 2006;
-	public static final int DOWN= 2007; 
+    public static final int DOWN= 2007; 
 
     protected Line line;
 
