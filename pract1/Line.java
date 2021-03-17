@@ -7,7 +7,7 @@ public class Line{
     public boolean modeIns; //Cuando true modo inserción
 
     public Line(){
-        this.line = new ArrayList<Character>;
+        this.line = new ArrayList<Character>();
     }
 
     public void write(char ch){
