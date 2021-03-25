@@ -21,7 +21,6 @@ public class EditableBufferedReader extends BufferedReader {
 
     public void setRaw() {
         String[] cmd = { "/bin/sh", "-c", "stty -echo raw </dev/tty" };
-        //String[] cmd = {"/bin/sh", "-c", "echo -ne '\033[6n'"};
         try {
             Runtime.getRuntime().exec(cmd).waitFor();
         } catch (Exception e) {
