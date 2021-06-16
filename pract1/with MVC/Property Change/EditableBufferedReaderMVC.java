@@ -2,7 +2,7 @@ import java.io.*;
 
 public class EditableBufferedReaderMVC extends BufferedReader { //CONTROLLER
 
-    public static final int HOME = -1; // o -2^32;
+    public static final int HOME = -1; 
     public static final int INS = -2;
     public static final int DEL = -3;
     public static final int END = -4;
@@ -66,7 +66,6 @@ public class EditableBufferedReaderMVC extends BufferedReader { //CONTROLLER
                             return read_aux;
                         }
                         return HOME - read + '1';
-
                     default:
                         return read;
                 }
@@ -80,11 +79,10 @@ public class EditableBufferedReaderMVC extends BufferedReader { //CONTROLLER
         int read;
         try{
             setRaw();
-            System.out.print("\033[H\033[J"); //FORMAT TERMINAL (\033[H: moves cursor to the top left of the screen
-                                              //                 \033[J: clears the part of the screen from the cursor to the end of the screen)
-		    System.out.flush();
+            System.out.print("\033[H\033[J"); 
+	    System.out.flush();
 
-            while ((read = this.read()) != 13) { // ENTER
+            while ((read = this.read()) != 13) { //Enter
                 switch (read) {
                     case LEFT:
                         line.goLeft();
