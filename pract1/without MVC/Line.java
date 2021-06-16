@@ -1,11 +1,9 @@
 import java.util.*;
 
 public class Line {
-    public List<Character> line; // Representa la linea del terminal
-    public int cursor; // La posición del cursor que nos permitirá controlar donde estamos dentro de la linea del terminal
-    public boolean modeIns = true; // Cuando true modo inserción
-
-    //public terminal = new ColumnesTerminal();
+    public List<Character> line; 
+    public int cursor;
+    public boolean modeIns = true;
 
     public Line() {
         this.line = new ArrayList<Character>();
@@ -41,16 +39,16 @@ public class Line {
     }
 
     public void changeMode() {
-        modeIns = !modeIns; // si está en inserción cambiamos a sobre-escritura
+        modeIns = !modeIns; 
     }
 
-    public void del() { //Borra caracter actual
+    public void del() { 
         if (cursor < line.size()) {
             line.remove(cursor);
         }
     }
 
-    public void bksp() { //Borra caracter a la izquierda
+    public void bksp() { 
         if (cursor != 0) {
             cursor--;
             line.remove(cursor);
@@ -58,7 +56,6 @@ public class Line {
     }
 
     public int getCursor() {
-        //System.out.print((int)cursor);
         return cursor;
     }
 
