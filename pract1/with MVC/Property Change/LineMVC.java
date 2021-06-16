@@ -51,17 +51,17 @@ public class LineMVC { //MODEL
     }
 
     public void changeMode() {
-        modeIns = !modeIns; // si está en inserción cambiamos a sobre-escritura
+        modeIns = !modeIns; 
     }
 
-    public void del() { //Borra caracter actual
+    public void del() { 
         if (cursor < line.size()) {
             line.remove(cursor);
             pcs.firePropertyChange("DEL", "", cursor);
         }
     }
 
-    public void bksp() { //Borra caracter a la izquierda
+    public void bksp() { 
         if (cursor != 0) {
             cursor--;
             line.remove(cursor);
