@@ -29,8 +29,7 @@ public class EditableBufferedReader extends BufferedReader {
 
 
     public void unsetRaw() {
-        String[] cmd = { "/bin/sh", "-c", "stty echo cooked </dev/tty" }; // stty echo-> disable echoing of terminal
-                                                                          // input
+        String[] cmd = { "/bin/sh", "-c", "stty echo cooked </dev/tty" };                                                                
         try {
             Runtime.getRuntime().exec(cmd).waitFor();
         } catch (Exception e) {
@@ -43,32 +42,6 @@ public class EditableBufferedReader extends BufferedReader {
         read = super.read();
         if (read != '\033')// ESC--> ^[
             return read;
-        /*
-            switch (read = super.read()) { 
-                case '0': 
-                    switch (read = super.read()) { 
-                        case 'H': return HOME; 
-                        case 'F': return END; 
-                        default: return read; 
-                    } 
-                case '[':
-                    switch (read = super.read()) { 
-                        case 'A': return UP; 
-                        case 'B': return DOWN;
-                        case 'C': return RIGHT; 
-                        case 'D': return LEFT; 
-                        case '1': 
-                        case '2': 
-                        case '3':
-                        case '4': 
-                            if ((read_aux = super.read()) != '~') 
-                                return read_aux; 
-                            return HOME - read + '1'; 
-                        default: return read; 
-                    } 
-                default: return read; 
-            }
-         */
         switch (read = super.read()) {
             case '[':
                 switch (read = super.read()) {
@@ -91,9 +64,7 @@ public class EditableBufferedReader extends BufferedReader {
                         if ((read_aux = super.read()) != '~') {
                             return read_aux;
                         }
-                        // return HOME + read - '1';
                         return HOME - read + '1';
-
                     default:
                         return read;
                 }
@@ -107,10 +78,10 @@ public class EditableBufferedReader extends BufferedReader {
         int read;
         try{
             setRaw();
-            System.out.print("\033[H\033[J"); //FORMAT TERMINAL
+            System.out.print("\033[H\033[J"); 
 		    System.out.flush();
 
-            while ((read = this.read()) != 13) { // ENTER
+            while ((read = this.read()) != 13) { //Enter
                 switch (read) {
                     case LEFT:
                         line.goLeft();
@@ -122,7 +93,6 @@ public class EditableBufferedReader extends BufferedReader {
                         break;
                     case HOME:
                         line.goHome();
-                        //System.out.print("\033[3;0H"); sin el format terminal
                         System.out.print("\033[H");
                         break;
                     case END:
@@ -131,14 +101,12 @@ public class EditableBufferedReader extends BufferedReader {
                         break;
                     case INS:
                         line.changeMode();
-                        //System.out.print("\033[2~");
                         break;
                     case DEL:
                         line.del();
-                        //System.out.print("\033[3~");
                         System.out.print("\033[P"); //Delete character
                         break;
-                    case 127: //BACKSPACE
+                    case 127: //Backspace
                         line.bksp();
                         System.out.print("\033[D\033[P"); 
                         //System.out.print("\033[P"); 
