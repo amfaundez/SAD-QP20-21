@@ -1,17 +1,12 @@
 import java.net.*;
-//import java.util.concurrent.ConcurrentHashMap;
 import java.io.*;
 
 public class MyServerSocket extends ServerSocket {
-
-    ///Key son clientes, values son server al que esté conectado
-    //private ConcurrentHashMap<String, MySocket> clientes= new ConcurrentHashMap<String, MySocket>(); 
 
     public MyServerSocket(int port) throws IOException{
         super(port);
     }
 
-    //listens for a connection to be made to this socket and accepts it.
     @Override
     public MySocket accept(){
         try{
@@ -21,7 +16,6 @@ public class MyServerSocket extends ServerSocket {
         }
     }
 
-    //close the current server socket 
     @Override
     public void close(){
         try{
@@ -31,7 +25,6 @@ public class MyServerSocket extends ServerSocket {
         }
     }
 
-    //binds the socket to a specific address
     @Override
     public void bind(SocketAddress endpoint){
         try{
