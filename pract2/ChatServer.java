@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 public class ChatServer {   
   
-    static final int MAX_CLIENTS = 3;             
+    static final int MAX_CLIENTS = 10;             
     private static ArrayList<ClientAuxiliar> clients= new ArrayList<>();
     private static ExecutorService pool= Executors.newFixedThreadPool(MAX_CLIENTS); 
 
@@ -27,8 +27,6 @@ public class ChatServer {
                 ClientAuxiliar clientThread= new ClientAuxiliar(s,clients);
                 clients.add(clientThread);
                 pool.execute(clientThread);
-
-                //new SendMessage(clients);
             }
         } catch (IOException e) {
             e.printStackTrace();
