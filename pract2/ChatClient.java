@@ -7,7 +7,7 @@ public class ChatClient {
 
         if (args.length != 3) {
             System.err.println(
-                "Usage: java EchoClient <host name> <port number> <name>");
+                "Usage: java ChatClient.java <host name> <port number> <name>");
             System.exit(1);
         }
 
@@ -25,14 +25,11 @@ public class ChatClient {
                     BufferedReader in= new BufferedReader(new InputStreamReader(System.in));
                     try{
                         while ((user_line=in.readLine())!=null)
-                            //escriure línia per socket
                             if(user_line.startsWith(name+": "))
                                 s.write(user_line);
                             else 
                                 s.write(name+": "+user_line);
-                        //close s for output
                         s.shutdownOutput();
-                        //s.close();
                     }catch(IOException e){
                         e.printStackTrace();
                     }
@@ -43,10 +40,8 @@ public class ChatClient {
             new Thread(){
                 public void run(){
                     String line;
-                    //mentre hi ha línia del servidor
                     try {
                         while ((line=s.readLine())!=null)
-                            //escriure línia per pantalla
                             if(line.startsWith(name))
                                 System.out.println(line);
                             else{
