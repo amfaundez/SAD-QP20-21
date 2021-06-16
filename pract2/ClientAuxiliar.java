@@ -12,9 +12,7 @@ public class ClientAuxiliar implements Runnable{
 
     public void run(){
         String line;
-
         try{
-
             while ((line =s.readLine()) != null) {
                 outToAll(line);
             }
