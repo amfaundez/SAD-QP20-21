@@ -1,7 +1,6 @@
 import java.net.*;
 import java.io.*;
 
-//encapsula el comportamiento del lado activo--> cliente
 public class MySocket extends Socket{
     private int port;
     private String host, name;
@@ -33,7 +32,7 @@ public class MySocket extends Socket{
 
     public MySocket(Socket socket) {
         try {
-	        this.socket = socket;
+	    this.socket = socket;
             this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             this.out = new PrintWriter(socket.getOutputStream(),true);
 	    }catch (IOException e) {
