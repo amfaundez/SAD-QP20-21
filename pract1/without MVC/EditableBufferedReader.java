@@ -2,7 +2,7 @@ import java.io.*;
 
 public class EditableBufferedReader extends BufferedReader {
 
-    public static final int HOME = -1; // o -2^32;
+    public static final int HOME = -1; 
     public static final int INS = -2;
     public static final int DEL = -3;
     public static final int END = -4;
